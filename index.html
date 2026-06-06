@@ -69,10 +69,10 @@
                 </div>
 
                 <div class="flex gap-3">
-                    <button onclick="startGame()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center uppercase tracking-wider">
+                    <button onclick="startGame()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center">
                         Enter Draft <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
                     </button>
-                    <button onclick="loadDraft()" class="px-6 bg-[#1f242c] hover:bg-[#30363d] border border-[#30363d] text-[#8b949e] hover:text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center" title="Load saved draft">
+                    <button onclick="loadDraft()" class="px-6 bg-[#1f242c] hover:bg-[#30363d] border border-[#30363d] text-[#8b949e] hover:text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center">
                         <i data-lucide="upload" class="h-5 w-5"></i>
                     </button>
                 </div>
@@ -118,7 +118,7 @@
 
         <div class="flex-1 flex overflow-hidden">
             <!-- Left Panel: Slot Machine & Roster -->
-            <div class="w-[420px] bg-var(--panel-bg) border-r border-[#30363d] flex flex-col z-10">
+            <div class="w-[420px] bg-[#161b22] border-r border-[#30363d] flex flex-col z-10">
                 <!-- Slot Machine Interface -->
                 <div class="p-5 border-b border-[#30363d] bg-[#0d1117]">
                     <div class="flex gap-4 mb-5">
@@ -136,10 +136,10 @@
                         </div>
                     </div>
                     <div class="flex gap-3">
-                        <button onclick="reroll('team')" id="btn-roll-team" class="flex-1 py-2 rounded-lg border border-orange-900/50 text-[11px] font-bold text-orange-400 hover:bg-orange-500/10 flex items-center justify-center transition-colors uppercase tracking-wider">
+                        <button onclick="reroll('team')" id="btn-roll-team" class="flex-1 py-2 rounded-lg border border-orange-900/50 text-[11px] font-bold text-orange-400 hover:bg-orange-500/10 transition-all flex items-center justify-center">
                             <i data-lucide="refresh-cw" class="w-3.5 h-3.5 mr-2"></i> Roll Team ( <span id="skips-team" class="mx-1">1</span> )
                         </button>
-                        <button onclick="reroll('era')" id="btn-roll-era" class="flex-1 py-2 rounded-lg border border-purple-900/50 text-[11px] font-bold text-purple-400 hover:bg-purple-500/10 flex items-center justify-center transition-colors uppercase tracking-wider">
+                        <button onclick="reroll('era')" id="btn-roll-era" class="flex-1 py-2 rounded-lg border border-purple-900/50 text-[11px] font-bold text-purple-400 hover:bg-purple-500/10 transition-all flex items-center justify-center">
                             <i data-lucide="refresh-cw" class="w-3.5 h-3.5 mr-2"></i> Roll Era ( <span id="skips-era" class="mx-1">1</span> )
                         </button>
                     </div>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="relative">
                         <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#8b949e]"></i>
-                        <input type="text" id="search-input" placeholder="Search..." class="w-full bg-[#0d1117] border border-[#30363d] rounded-lg py-2 pl-9 pr-3 text-sm focus:outline-none focus:border-blue-500 text-white placeholder-[#8b949e] transition-colors">
+                        <input type="text" id="search-input" placeholder="Search..." class="w-full bg-[#0d1117] border border-[#30363d] rounded-lg py-2 pl-9 pr-3 text-sm focus:outline-none focus:border-blue-500 text-white">
                     </div>
                 </div>
 
@@ -167,9 +167,9 @@
             </div>
 
             <!-- Right Panel: Pitch & Stats -->
-            <div class="flex-1 bg-var(--bg-deep) p-6 flex flex-col items-center overflow-y-auto relative" id="right-panel-scroll">
+            <div class="flex-1 bg-[#0f1219] p-6 flex flex-col items-center overflow-y-auto relative" id="right-panel-scroll">
                 <!-- Dynamic Helper HUD -->
-                <div id="placement-helper" class="absolute top-4 w-full max-w-2xl text-center text-sm font-semibold text-[#8b949e] h-8 transition-opacity opacity-0 z-20 flex justify-center items-center gap-2 bg-[#161b22] border border-[#30363d] rounded-full px-4 shadow-lg">
+                <div id="placement-helper" class="absolute top-4 w-full max-w-2xl text-center text-sm font-semibold text-[#8b949e] h-8 transition-opacity opacity-0 z-20 flex justify-center items-center">
                     <span id="helper-text">SELECT A PLAYER TO HIGHLIGHT ELIGIBLE POSITIONS ON THE PITCH</span>
                 </div>
 
@@ -198,132 +198,76 @@
                         <div class="stat-box">
                             <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Assists</div>
                             <div class="text-2xl font-black text-white mb-3" id="tot-ast">0</div>
-                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-ast" style="width: 0%;"></div></div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-blue-500 transition-all duration-500" id="prog-ast" style="width: 0%;"></div></div>
                         </div>
                         <div class="stat-box">
                             <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Dribbles</div>
                             <div class="text-2xl font-black text-white mb-3" id="tot-drb">0</div>
-                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-drb" style="width: 0%;"></div></div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-yellow-500 transition-all duration-500" id="prog-drb" style="width: 0%;"></div></div>
                         </div>
                         <div class="stat-box">
                             <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Tackles</div>
                             <div class="text-2xl font-black text-white mb-3" id="tot-tck">0</div>
-                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-tck" style="width: 0%;"></div></div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-red-500 transition-all duration-500" id="prog-tck" style="width: 0%;"></div></div>
                         </div>
                         <div class="stat-box">
-                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Intercept</div>
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Interceptions</div>
                             <div class="text-2xl font-black text-white mb-3" id="tot-int">0</div>
-                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-int" style="width: 0%;"></div></div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-purple-500 transition-all duration-500" id="prog-int" style="width: 0%;"></div></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tactical Pitch -->
-                <div class="w-full max-w-3xl aspect-[4/5] lg:aspect-[3/4] pitch-container" id="pitch-container">
-                    <div class="pitch-markings"></div>
-                </div>
-                
-                <!-- Simulation Trigger -->
-                <div id="simulate-container" class="w-full max-w-3xl mt-8 hidden pb-12">
-                    <button onclick="simulateSeason()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 px-6 rounded-2xl transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] border border-emerald-400 flex items-center justify-center text-xl uppercase tracking-widest">
-                        <i data-lucide="play-circle" class="mr-3 h-6 w-6"></i> Simulate 38-Game Season
+                <!-- Pitch Container -->
+                <div id="pitch-container" class="pitch-container w-full max-w-4xl h-96 mb-8"></div>
+
+                <!-- Simulate Button -->
+                <div id="simulate-container" class="hidden">
+                    <button onclick="simulateSeason()" class="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(46,160,67,0.3)]">
+                        ⚽ Simulate Season (38 Games)
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Leaderboard Modal -->
-    <div id="leaderboard-modal" class="modal-overlay" onclick="if(event.target === this) closeModal('leaderboard-modal')">
-        <div class="glass-panel rounded-2xl max-w-2xl w-full p-6 relative border-blue-900 shadow-[0_0_40px_rgba(59,130,246,0.15)] max-h-[80vh] overflow-y-auto">
-            <button onclick="closeModal('leaderboard-modal')" class="absolute top-4 right-4 text-[#8b949e] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="flex items-center mb-5 pb-4 border-b border-[#30363d]">
-                <div class="w-12 h-12 rounded-full bg-yellow-900/30 flex items-center justify-center mr-4 border border-yellow-500/30">
-                    <i data-lucide="trophy" class="w-6 h-6 text-yellow-400"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white text-lg leading-tight">Global Leaderboard</h3>
-                    <div class="text-[10px] text-yellow-400 uppercase tracking-widest font-bold mt-1">Top Teams</div>
-                </div>
-            </div>
+    <!-- Result Modal -->
+    <div id="result-modal" class="modal-overlay hidden" onclick="closeModal('result-modal')">
+        <div class="glass-panel rounded-2xl p-8 max-w-2xl w-full border border-[#30363d]" onclick="event.stopPropagation()">
+            <h2 class="text-3xl font-black text-white mb-6 text-center">⚽ Season Complete!</h2>
             
-            <div id="leaderboard-content" class="space-y-3">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- AI Scout Modal -->
-    <div id="ai-modal" class="modal-overlay" onclick="if(event.target === this) closeModal('ai-modal')">
-        <div class="glass-panel rounded-2xl max-w-md w-full p-6 relative border-blue-900 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
-            <button onclick="closeModal('ai-modal')" class="absolute top-4 right-4 text-[#8b949e] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="flex items-center mb-5 pb-4 border-b border-[#30363d]">
-                <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mr-4 border border-blue-500/30">
-                    <i data-lucide="bot" class="w-6 h-6 text-blue-400"></i>
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="text-center">
+                    <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Record</div>
+                    <div class="text-4xl font-black text-emerald-400" id="result-record">38-0-0</div>
                 </div>
-                <div>
-                    <h3 class="font-bold text-white text-lg leading-tight">Chief Scout AI</h3>
-                    <div class="text-[10px] text-blue-400 uppercase tracking-widest font-bold mt-1" id="ai-player-name">Player Name</div>
-                </div>
-            </div>
-            
-            <div id="ai-loading" class="flex flex-col items-center justify-center py-10">
-                <i data-lucide="loader-2" class="w-8 h-8 text-blue-500 animate-spin mb-4"></i>
-                <p class="text-xs text-[#8b949e] font-bold uppercase tracking-widest">Analyzing historical archives...</p>
-            </div>
-            
-            <div id="ai-content" class="hidden text-sm leading-relaxed text-[#c9d1d9] space-y-4"></div>
-        </div>
-    </div>
-
-    <!-- Season Result Modal -->
-    <div id="result-modal" class="modal-overlay">
-        <div class="glass-panel rounded-3xl max-w-2xl w-full p-10 text-center shadow-[0_0_60px_rgba(0,0,0,0.9)] border-[#30363d]">
-            <div class="inline-block p-4 rounded-full bg-[#161b22] mb-6 border border-[#30363d]" id="result-icon-container">
-                <i data-lucide="trophy" class="w-10 h-10 text-yellow-500" id="result-icon"></i>
-            </div>
-            
-            <h2 id="result-title" class="text-4xl font-black mb-2 uppercase tracking-tighter text-white">Season Complete</h2>
-            <div id="result-record" class="text-6xl font-black mb-8 text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)] tracking-tighter">38 - 0 - 0</div>
-            
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <div class="bg-[#0d1117] rounded-2xl p-5 border border-[#30363d]">
-                    <h4 class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Final Squad OVR</h4>
-                    <div id="result-ovr" class="text-4xl font-black text-blue-400">92</div>
-                </div>
-                <div class="bg-[#0d1117] rounded-2xl p-5 border border-[#30363d]">
-                    <h4 class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Chemistry Score</h4>
-                    <div id="result-chem" class="text-4xl font-black text-emerald-400">85<span class="text-sm text-emerald-700">/100</span></div>
+                <div class="text-center">
+                    <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Chemistry</div>
+                    <div class="text-4xl font-black text-blue-400" id="result-chem">10/100</div>
                 </div>
             </div>
 
-            <div class="bg-[#161b22] rounded-2xl p-6 mb-8 border border-[#30363d] text-left relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-1.5 h-full bg-purple-500"></div>
-                <h4 class="font-bold text-xs text-purple-400 uppercase tracking-widest mb-4 flex items-center">
-                    <i data-lucide="tv" class="w-4 h-4 mr-2"></i> Pundit's Verdict (AI)
-                </h4>
-                <div id="pundit-loading" class="flex items-center text-sm text-[#8b949e]">
-                    <i data-lucide="loader-2" class="w-4 h-4 mr-2 animate-spin"></i> Generating analysis...
-                </div>
-                <p id="pundit-text" class="text-sm text-[#c9d1d9] italic leading-relaxed hidden">...</p>
+            <div class="bg-[#010409] border border-[#30363d] rounded-lg p-6 mb-6">
+                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                    <i data-lucide="message-square" class="w-5 h-5 mr-2 text-orange-400"></i> AI Pundit Analysis
+                </h3>
+                <div id="pundit-loading" class="text-[#8b949e] text-sm">Analyzing your team...</div>
+                <div id="pundit-text" class="text-white text-sm hidden leading-relaxed"></div>
             </div>
 
             <div class="flex gap-3">
-                <button onclick="submitLeaderboard()" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white font-black py-4 px-6 rounded-xl transition-colors flex items-center justify-center uppercase tracking-widest text-lg">
-                    <i data-lucide="send" class="mr-2 h-5 w-5"></i> Submit to Leaderboard
+                <button onclick="closeModal('result-modal'); location.reload();" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-all">
+                    Try Again
                 </button>
-                <button onclick="location.reload()" class="flex-1 bg-white text-black font-black py-4 px-6 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center uppercase tracking-widest text-lg">
-                    <i data-lucide="rotate-ccw" class="mr-2 h-5 w-5"></i> New Draft
+                <button onclick="exportDraft(); closeModal('result-modal');" class="flex-1 bg-[#1f242c] hover:bg-[#30363d] border border-[#30363d] text-[#8b949e] hover:text-white font-bold py-3 px-6 rounded-lg transition-all">
+                    Export Draft
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="data/players.js"></script>
-    <script src="js/formations.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/ai.js"></script>
-    <script src="js/leaderboard.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
