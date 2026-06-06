@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>38-0: The Invincible Draft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- START SCREEN -->
+    <div id="start-screen" class="absolute inset-0 z-50 flex flex-col items-center justify-center p-6 bg-[#010409]">
+        <div class="max-w-2xl w-full glass-panel rounded-2xl p-8 border border-[#30363d]">
+            <div class="text-center mb-10">
+                <h1 class="text-5xl font-black tracking-tighter text-white mb-2 uppercase italic">
+                    38-0: <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Invincible</span>
+                </h1>
+                <p class="text-[#8b949e] font-medium">Assemble a historical 11-man squad to achieve perfection.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- 1. Draft Pool -->
+                <div>
+                    <h3 class="text-xs font-bold text-[#8b949e] uppercase tracking-widest mb-3 flex items-center">
+                        <i data-lucide="globe" class="w-4 h-4 mr-2"></i> 1. Select Draft Pool
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button class="pool-btn btn-modern active py-3 px-4" data-pool="Global">Global</button>
+                        <button class="pool-btn btn-modern py-3 px-4" data-pool="Premier League">Premier</button>
+                        <button class="pool-btn btn-modern py-3 px-4" data-pool="La Liga">La Liga</button>
+                        <button class="pool-btn btn-modern py-3 px-4" data-pool="Serie A">Serie A</button>
+                        <button class="pool-btn btn-modern py-3 px-4" data-pool="Bundesliga">Bundesliga</button>
+                    </div>
+                </div>
+
+                <!-- 2. Game Mode -->
+                <div>
+                    <h3 class="text-xs font-bold text-[#8b949e] uppercase tracking-widest mb-3 flex items-center">
+                        <i data-lucide="gamepad-2" class="w-4 h-4 mr-2"></i> 2. Game Mode
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="mode-card active" data-mode="Classic">
+                            <h4 class="mode-title font-bold text-white text-lg mb-1">Classic</h4>
+                            <p class="text-xs text-[#8b949e]">All player stats and OVR are fully visible during the draft.</p>
+                        </div>
+                        <div class="mode-card" data-mode="IQ">
+                            <h4 class="mode-title font-bold text-white text-lg mb-1">Football IQ</h4>
+                            <p class="text-xs text-[#8b949e]">Blind draft. Stats are hidden. Rely purely on ball knowledge.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Formation -->
+                <div>
+                    <h3 class="text-xs font-bold text-[#8b949e] uppercase tracking-widest mb-3 flex items-center">
+                        <i data-lucide="layout-template" class="w-4 h-4 mr-2"></i> 3. Tactical Setup
+                    </h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button class="form-btn btn-modern active py-3" data-form="4-3-3">4-3-3</button>
+                        <button class="form-btn btn-modern py-3" data-form="4-4-2">4-4-2</button>
+                        <button class="form-btn btn-modern py-3" data-form="3-4-3">3-4-3</button>
+                    </div>
+                </div>
+
+                <div id="start-error" class="text-red-400 text-sm text-center hidden bg-red-900/10 p-3 rounded-lg border border-red-900/50">
+                    <i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i> Not enough players in this pool. Try Global.
+                </div>
+
+                <div class="flex gap-3">
+                    <button onclick="startGame()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center uppercase tracking-wider">
+                        Enter Draft <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
+                    </button>
+                    <button onclick="loadDraft()" class="px-6 bg-[#1f242c] hover:bg-[#30363d] border border-[#30363d] text-[#8b949e] hover:text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center" title="Load saved draft">
+                        <i data-lucide="upload" class="h-5 w-5"></i>
+                    </button>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="showLeaderboard()" class="text-blue-400 hover:text-blue-300 text-sm font-semibold flex items-center justify-center gap-2 mx-auto transition-colors">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i> View Leaderboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAFT UI -->
+    <div id="game-ui" class="hidden h-screen flex flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between px-6 py-3 glass-panel z-20 border-b border-[#30363d]">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-[#1f242c] border border-[#30363d] flex items-center justify-center font-black text-white shadow-inner">38</div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-white tracking-tight">Round <span id="round-counter" class="text-white">1</span>/11</h1>
+                    <div class="text-[10px] text-[#8b949e] font-bold uppercase tracking-wider flex items-center gap-2 mt-0.5">
+                        <span id="header-formation" class="text-blue-400">4-3-3</span> 
+                        <span class="text-[#30363d]">|</span> 
+                        <span id="header-pool" class="text-emerald-400">Global</span> 
+                        <span class="text-[#30363d]">|</span> 
+                        <span id="header-mode" class="text-orange-400">Classic</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="saveDraft()" class="text-[#8b949e] hover:text-white flex items-center text-xs font-bold uppercase tracking-wider transition-colors">
+                    <i data-lucide="save" class="w-4 h-4 mr-1"></i> Save
+                </button>
+                <button onclick="exportDraft()" class="text-[#8b949e] hover:text-white flex items-center text-xs font-bold uppercase tracking-wider transition-colors">
+                    <i data-lucide="download" class="w-4 h-4 mr-1"></i> Export
+                </button>
+                <button onclick="location.reload()" class="text-[#8b949e] hover:text-white flex items-center text-xs font-bold uppercase tracking-wider transition-colors">
+                    <i data-lucide="log-out" class="w-4 h-4 mr-1"></i> Quit
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            <!-- Left Panel: Slot Machine & Roster -->
+            <div class="w-[420px] bg-var(--panel-bg) border-r border-[#30363d] flex flex-col z-10">
+                <!-- Slot Machine Interface -->
+                <div class="p-5 border-b border-[#30363d] bg-[#0d1117]">
+                    <div class="flex gap-4 mb-5">
+                        <div class="flex-1">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-1.5 ml-1">Team</div>
+                            <div class="slot-screen team-pill h-12 px-4">
+                                <span id="slot-team" class="font-black text-lg text-orange-400 tracking-tight truncate w-full">SPINNING...</span>
+                            </div>
+                        </div>
+                        <div class="w-24">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-1.5 ml-1 text-center">Era</div>
+                            <div class="slot-screen era-pill h-12 justify-center">
+                                <span id="slot-era" class="font-black text-lg text-purple-400">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="reroll('team')" id="btn-roll-team" class="flex-1 py-2 rounded-lg border border-orange-900/50 text-[11px] font-bold text-orange-400 hover:bg-orange-500/10 flex items-center justify-center transition-colors uppercase tracking-wider">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5 mr-2"></i> Roll Team ( <span id="skips-team" class="mx-1">1</span> )
+                        </button>
+                        <button onclick="reroll('era')" id="btn-roll-era" class="flex-1 py-2 rounded-lg border border-purple-900/50 text-[11px] font-bold text-purple-400 hover:bg-purple-500/10 flex items-center justify-center transition-colors uppercase tracking-wider">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5 mr-2"></i> Roll Era ( <span id="skips-era" class="mx-1">1</span> )
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="p-4 border-b border-[#30363d] bg-[#161b22]">
+                    <div class="flex gap-2 mb-3">
+                        <button class="pos-filter btn-modern text-xs active px-3 py-1.5 flex-1" data-pos="All">All</button>
+                        <button class="pos-filter btn-modern text-xs px-3 py-1.5 flex-1" data-pos="FW">FW</button>
+                        <button class="pos-filter btn-modern text-xs px-3 py-1.5 flex-1" data-pos="MF">MF</button>
+                        <button class="pos-filter btn-modern text-xs px-3 py-1.5 flex-1" data-pos="DF">DF</button>
+                        <button class="pos-filter btn-modern text-xs px-3 py-1.5 flex-1" data-pos="GK">GK</button>
+                    </div>
+                    <div class="relative">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#8b949e]"></i>
+                        <input type="text" id="search-input" placeholder="Search..." class="w-full bg-[#0d1117] border border-[#30363d] rounded-lg py-2 pl-9 pr-3 text-sm focus:outline-none focus:border-blue-500 text-white placeholder-[#8b949e] transition-colors">
+                    </div>
+                </div>
+
+                <!-- Player List Container -->
+                <div class="flex-1 overflow-y-auto" id="player-list-container">
+                    <!-- Javascript populates this -->
+                </div>
+            </div>
+
+            <!-- Right Panel: Pitch & Stats -->
+            <div class="flex-1 bg-var(--bg-deep) p-6 flex flex-col items-center overflow-y-auto relative" id="right-panel-scroll">
+                <!-- Dynamic Helper HUD -->
+                <div id="placement-helper" class="absolute top-4 w-full max-w-2xl text-center text-sm font-semibold text-[#8b949e] h-8 transition-opacity opacity-0 z-20 flex justify-center items-center gap-2 bg-[#161b22] border border-[#30363d] rounded-full px-4 shadow-lg">
+                    <span id="helper-text">SELECT A PLAYER TO HIGHLIGHT ELIGIBLE POSITIONS ON THE PITCH</span>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div class="w-full max-w-4xl glass-panel rounded-2xl p-6 mb-8 mt-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="font-black text-xl text-white tracking-tight">Squad Evaluation</h2>
+                        <div class="flex gap-8">
+                            <div class="text-right">
+                                <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-1">Team OVR</div>
+                                <div class="text-3xl font-black text-blue-400 leading-none" id="team-ovr">0</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-1">Chemistry</div>
+                                <div class="text-3xl font-black text-emerald-400 leading-none" id="team-chem">0<span class="text-sm text-emerald-700">/100</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <div class="stat-box">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Goals</div>
+                            <div class="text-2xl font-black text-white mb-3" id="tot-gls">0</div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-gls" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Assists</div>
+                            <div class="text-2xl font-black text-white mb-3" id="tot-ast">0</div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-ast" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Dribbles</div>
+                            <div class="text-2xl font-black text-white mb-3" id="tot-drb">0</div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-drb" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Tackles</div>
+                            <div class="text-2xl font-black text-white mb-3" id="tot-tck">0</div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-tck" style="width: 0%;"></div></div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="text-[10px] font-bold text-[#8b949e] uppercase tracking-wider mb-2">Intercept</div>
+                            <div class="text-2xl font-black text-white mb-3" id="tot-int">0</div>
+                            <div class="w-full h-1.5 bg-[#1f242c] rounded-full overflow-hidden"><div class="h-full bg-emerald-500 transition-all duration-500" id="prog-int" style="width: 0%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tactical Pitch -->
+                <div class="w-full max-w-3xl aspect-[4/5] lg:aspect-[3/4] pitch-container" id="pitch-container">
+                    <div class="pitch-markings"></div>
+                </div>
+                
+                <!-- Simulation Trigger -->
+                <div id="simulate-container" class="w-full max-w-3xl mt-8 hidden pb-12">
+                    <button onclick="simulateSeason()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-5 px-6 rounded-2xl transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] border border-emerald-400 flex items-center justify-center text-xl uppercase tracking-widest">
+                        <i data-lucide="play-circle" class="mr-3 h-6 w-6"></i> Simulate 38-Game Season
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="modal-overlay" onclick="if(event.target === this) closeModal('leaderboard-modal')">
+        <div class="glass-panel rounded-2xl max-w-2xl w-full p-6 relative border-blue-900 shadow-[0_0_40px_rgba(59,130,246,0.15)] max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('leaderboard-modal')" class="absolute top-4 right-4 text-[#8b949e] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="flex items-center mb-5 pb-4 border-b border-[#30363d]">
+                <div class="w-12 h-12 rounded-full bg-yellow-900/30 flex items-center justify-center mr-4 border border-yellow-500/30">
+                    <i data-lucide="trophy" class="w-6 h-6 text-yellow-400"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-lg leading-tight">Global Leaderboard</h3>
+                    <div class="text-[10px] text-yellow-400 uppercase tracking-widest font-bold mt-1">Top Teams</div>
+                </div>
+            </div>
+            
+            <div id="leaderboard-content" class="space-y-3">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Scout Modal -->
+    <div id="ai-modal" class="modal-overlay" onclick="if(event.target === this) closeModal('ai-modal')">
+        <div class="glass-panel rounded-2xl max-w-md w-full p-6 relative border-blue-900 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+            <button onclick="closeModal('ai-modal')" class="absolute top-4 right-4 text-[#8b949e] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="flex items-center mb-5 pb-4 border-b border-[#30363d]">
+                <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mr-4 border border-blue-500/30">
+                    <i data-lucide="bot" class="w-6 h-6 text-blue-400"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-lg leading-tight">Chief Scout AI</h3>
+                    <div class="text-[10px] text-blue-400 uppercase tracking-widest font-bold mt-1" id="ai-player-name">Player Name</div>
+                </div>
+            </div>
+            
+            <div id="ai-loading" class="flex flex-col items-center justify-center py-10">
+                <i data-lucide="loader-2" class="w-8 h-8 text-blue-500 animate-spin mb-4"></i>
+                <p class="text-xs text-[#8b949e] font-bold uppercase tracking-widest">Analyzing historical archives...</p>
+            </div>
+            
+            <div id="ai-content" class="hidden text-sm leading-relaxed text-[#c9d1d9] space-y-4"></div>
+        </div>
+    </div>
+
+    <!-- Season Result Modal -->
+    <div id="result-modal" class="modal-overlay">
+        <div class="glass-panel rounded-3xl max-w-2xl w-full p-10 text-center shadow-[0_0_60px_rgba(0,0,0,0.9)] border-[#30363d]">
+            <div class="inline-block p-4 rounded-full bg-[#161b22] mb-6 border border-[#30363d]" id="result-icon-container">
+                <i data-lucide="trophy" class="w-10 h-10 text-yellow-500" id="result-icon"></i>
+            </div>
+            
+            <h2 id="result-title" class="text-4xl font-black mb-2 uppercase tracking-tighter text-white">Season Complete</h2>
+            <div id="result-record" class="text-6xl font-black mb-8 text-emerald-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.3)] tracking-tighter">38 - 0 - 0</div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-[#0d1117] rounded-2xl p-5 border border-[#30363d]">
+                    <h4 class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Final Squad OVR</h4>
+                    <div id="result-ovr" class="text-4xl font-black text-blue-400">92</div>
+                </div>
+                <div class="bg-[#0d1117] rounded-2xl p-5 border border-[#30363d]">
+                    <h4 class="text-[10px] font-bold text-[#8b949e] uppercase tracking-widest mb-2">Chemistry Score</h4>
+                    <div id="result-chem" class="text-4xl font-black text-emerald-400">85<span class="text-sm text-emerald-700">/100</span></div>
+                </div>
+            </div>
+
+            <div class="bg-[#161b22] rounded-2xl p-6 mb-8 border border-[#30363d] text-left relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-purple-500"></div>
+                <h4 class="font-bold text-xs text-purple-400 uppercase tracking-widest mb-4 flex items-center">
+                    <i data-lucide="tv" class="w-4 h-4 mr-2"></i> Pundit's Verdict (AI)
+                </h4>
+                <div id="pundit-loading" class="flex items-center text-sm text-[#8b949e]">
+                    <i data-lucide="loader-2" class="w-4 h-4 mr-2 animate-spin"></i> Generating analysis...
+                </div>
+                <p id="pundit-text" class="text-sm text-[#c9d1d9] italic leading-relaxed hidden">...</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="submitLeaderboard()" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white font-black py-4 px-6 rounded-xl transition-colors flex items-center justify-center uppercase tracking-widest text-lg">
+                    <i data-lucide="send" class="mr-2 h-5 w-5"></i> Submit to Leaderboard
+                </button>
+                <button onclick="location.reload()" class="flex-1 bg-white text-black font-black py-4 px-6 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center uppercase tracking-widest text-lg">
+                    <i data-lucide="rotate-ccw" class="mr-2 h-5 w-5"></i> New Draft
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/players.js"></script>
+    <script src="js/formations.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
