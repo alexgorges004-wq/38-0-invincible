@@ -1,4 +1,4 @@
-// 38-0 Invincible - Player Database (200+ Legendary Players)
+// 38-0 Invincible - Player Database (250+ Legendary Players)
 
 const playersDB = [
     // ============ BARCELONA 10s ============
@@ -75,16 +75,17 @@ const playersDB = [
     // ============ LIVERPOOL 20s ============
     { id: 401, name: "Mohamed Salah", pos: ["RW", "ST"], club: "Liverpool", league: "Premier League", nat: "EGY", decade: "20s", stats: {gls: 22, ast: 13, drb: 85, tck: 25, int: 20}, ovr: 90 },
     { id: 402, name: "Virgil van Dijk", pos: ["CB"], club: "Liverpool", league: "Premier League", nat: "NED", decade: "20s", stats: {gls: 4, ast: 2, drb: 15, tck: 85, int: 90}, ovr: 90 },
-    { id: 403, name: "Trent Alexander-Arnold", pos: ["RB", "RWB", "CM"], club: "Liverpool", league: "Premier League", nat: "ENG", decade: "20s", stats: {gls: 4, ast: 15, drb: 60, tck: 70, int: 65}, ovr: 87 },
+    { id: 403, name: "Trent Alexander-Arnold", pos: ["RB", "RWB", "CM"], club: "Liverpool", league: "Premier League", nat: "ENG", decade: "20s", stats: {gls: 4, ast: 15, drb: 60, tck: 70, int: 65}, ovr: 88 },
     { id: 404, name: "Alisson Becker", pos: ["GK"], club: "Liverpool", league: "Premier League", nat: "BRA", decade: "20s", stats: {gls: 1, ast: 1, drb: 5, tck: 10, int: 25}, ovr: 89 },
     { id: 405, name: "Andrew Robertson", pos: ["LB", "LWB"], club: "Liverpool", league: "Premier League", nat: "SCO", decade: "20s", stats: {gls: 2, ast: 10, drb: 45, tck: 75, int: 70}, ovr: 86 },
-    { id: 406, name: "Alexis Mac Allister", pos: ["CM", "CDM", "CAM"], club: "Liverpool", league: "Premier League", nat: "ARG", decade: "20s", stats: {gls: 6, ast: 7, drb: 65, tck: 75, int: 70}, ovr: 86 },
-    { id: 407, name: "Dominik Szoboszlai", pos: ["CM", "RM", "CAM"], club: "Liverpool", league: "Premier League", nat: "HUN", decade: "20s", stats: {gls: 7, ast: 8, drb: 70, tck: 60, int: 50}, ovr: 85 },
+    { id: 406, name: "Alexis Mac Allister", pos: ["CM", "CDM", "CAM"], club: "Liverpool", league: "Premier League", nat: "ARG", decade: "20s", stats: {gls: 6, ast: 7, drb: 65, tck: 75, int: 70}, ovr: 85 },
+    { id: 407, name: "Dominik Szoboszlai", pos: ["CM", "RM", "CAM"], club: "Liverpool", league: "Premier League", nat: "HUN", decade: "20s", stats: {gls: 7, ast: 8, drb: 70, tck: 60, int: 50}, ovr: 84 },
     { id: 408, name: "Diogo Jota", pos: ["ST", "LW", "RW"], club: "Liverpool", league: "Premier League", nat: "POR", decade: "20s", stats: {gls: 15, ast: 5, drb: 55, tck: 35, int: 25}, ovr: 85 },
     { id: 409, name: "Luis Díaz", pos: ["LW", "LM"], club: "Liverpool", league: "Premier League", nat: "COL", decade: "20s", stats: {gls: 10, ast: 6, drb: 95, tck: 30, int: 20}, ovr: 84 },
     { id: 410, name: "Ibrahima Konaté", pos: ["CB"], club: "Liverpool", league: "Premier League", nat: "FRA", decade: "20s", stats: {gls: 2, ast: 0, drb: 10, tck: 80, int: 80}, ovr: 84 },
     
-    // ============ ARSENAL 00s ============\n    { id: 501, name: "Thierry Henry", pos: ["ST", "LW"], club: "Arsenal", league: "Premier League", nat: "FRA", decade: "00s", stats: {gls: 30, ast: 15, drb: 110, tck: 20, int: 15}, ovr: 94 },
+    // ============ ARSENAL 00s ============
+    { id: 501, name: "Thierry Henry", pos: ["ST", "LW"], club: "Arsenal", league: "Premier League", nat: "FRA", decade: "00s", stats: {gls: 30, ast: 14, drb: 90, tck: 25, int: 20}, ovr: 94 },
     { id: 502, name: "Dennis Bergkamp", pos: ["CF", "CAM"], club: "Arsenal", league: "Premier League", nat: "NED", decade: "00s", stats: {gls: 11, ast: 18, drb: 80, tck: 25, int: 20}, ovr: 90 },
     { id: 503, name: "Patrick Vieira", pos: ["CM", "CDM"], club: "Arsenal", league: "Premier League", nat: "FRA", decade: "00s", stats: {gls: 6, ast: 8, drb: 60, tck: 90, int: 85}, ovr: 91 },
     { id: 504, name: "Robert Pires", pos: ["LM", "LW"], club: "Arsenal", league: "Premier League", nat: "FRA", decade: "00s", stats: {gls: 14, ast: 11, drb: 85, tck: 30, int: 25}, ovr: 88 },
@@ -94,15 +95,20 @@ const playersDB = [
     { id: 508, name: "Gilberto Silva", pos: ["CDM"], club: "Arsenal", league: "Premier League", nat: "BRA", decade: "00s", stats: {gls: 4, ast: 2, drb: 25, tck: 85, int: 90}, ovr: 86 },
     { id: 510, name: "Jens Lehmann", pos: ["GK"], club: "Arsenal", league: "Premier League", nat: "GER", decade: "00s", stats: {gls: 0, ast: 0, drb: 0, tck: 5, int: 15}, ovr: 85 },
     
-    // ============ NAPOLI 20s ============\n    { id: 601, name: "Victor Osimhen", pos: ["ST"], club: "Napoli", league: "Serie A", nat: "NGA", decade: "20s", stats: {gls: 26, ast: 4, drb: 40, tck: 15, int: 10}, ovr: 88 },
+    // ============ NAPOLI 20s ============
+    { id: 601, name: "Victor Osimhen", pos: ["ST"], club: "Napoli", league: "Serie A", nat: "NGA", decade: "20s", stats: {gls: 26, ast: 4, drb: 40, tck: 15, int: 10}, ovr: 88 },
     { id: 602, name: "Khvicha Kvaratskhelia", pos: ["LW", "LM"], club: "Napoli", league: "Serie A", nat: "GEO", decade: "20s", stats: {gls: 12, ast: 13, drb: 100, tck: 25, int: 20}, ovr: 86 },
     { id: 603, name: "Kim Min-jae", pos: ["CB"], club: "Napoli", league: "Serie A", nat: "KOR", decade: "20s", stats: {gls: 2, ast: 2, drb: 20, tck: 85, int: 85}, ovr: 85 },
     { id: 604, name: "Stanislav Lobotka", pos: ["CDM", "CM"], club: "Napoli", league: "Serie A", nat: "SVK", decade: "20s", stats: {gls: 1, ast: 2, drb: 60, tck: 75, int: 80}, ovr: 84 },
     { id: 605, name: "Zambo Anguissa", pos: ["CM", "CDM"], club: "Napoli", league: "Serie A", nat: "CMR", decade: "20s", stats: {gls: 3, ast: 5, drb: 55, tck: 70, int: 65}, ovr: 83 },
     { id: 607, name: "Giovanni Di Lorenzo", pos: ["RB", "RWB"], club: "Napoli", league: "Serie A", nat: "ITA", decade: "20s", stats: {gls: 3, ast: 6, drb: 40, tck: 75, int: 70}, ovr: 84 },
+    { id: 608, name: "Alex Meret", pos: ["GK"], club: "Napoli", league: "Serie A", nat: "ITA", decade: "20s", stats: {gls: 0, ast: 0, drb: 5, tck: 5, int: 20}, ovr: 82 },
+    { id: 609, name: "Juan Jesus", pos: ["CB", "LB"], club: "Napoli", league: "Serie A", nat: "BRA", decade: "20s", stats: {gls: 1, ast: 1, drb: 15, tck: 70, int: 75}, ovr: 80 },
+    { id: 610, name: "Matteo Politano", pos: ["RW", "RM"], club: "Napoli", league: "Serie A", nat: "ITA", decade: "20s", stats: {gls: 8, ast: 9, drb: 75, tck: 35, int: 30}, ovr: 81 },
     
-    // ============ MANCHESTER UNITED 00s ============\n    { id: 701, name: "Wayne Rooney", pos: ["ST", "CF", "CAM"], club: "Man Utd", league: "Premier League", nat: "ENG", decade: "00s", stats: {gls: 26, ast: 12, drb: 75, tck: 35, int: 25}, ovr: 90 },
-    { id: 702, name: "Cristiano Ronaldo", pos: ["RW", "LW", "ST"], club: "Man Utd", league: "Premier League", nat: "POR", decade: "00s", stats: {gls: 31, ast: 8, drb: 120, tck: 20, int: 15}, ovr: 93 },
+    // ============ MANCHESTER UNITED 00s ============
+    { id: 701, name: "Wayne Rooney", pos: ["ST", "CF", "CAM"], club: "Man Utd", league: "Premier League", nat: "ENG", decade: "00s", stats: {gls: 20, ast: 12, drb: 70, tck: 40, int: 35}, ovr: 90 },
+    { id: 702, name: "Cristiano Ronaldo", pos: ["RW", "LW", "ST"], club: "Man Utd", league: "Premier League", nat: "POR", decade: "00s", stats: {gls: 31, ast: 8, drb: 120, tck: 20, int: 15}, ovr: 95 },
     { id: 703, name: "Paul Scholes", pos: ["CM", "CDM"], club: "Man Utd", league: "Premier League", nat: "ENG", decade: "00s", stats: {gls: 10, ast: 14, drb: 55, tck: 65, int: 60}, ovr: 89 },
     { id: 704, name: "Ryan Giggs", pos: ["LM", "LW"], club: "Man Utd", league: "Premier League", nat: "WAL", decade: "00s", stats: {gls: 8, ast: 16, drb: 95, tck: 30, int: 25}, ovr: 88 },
     { id: 705, name: "Rio Ferdinand", pos: ["CB"], club: "Man Utd", league: "Premier League", nat: "ENG", decade: "00s", stats: {gls: 2, ast: 2, drb: 30, tck: 85, int: 90}, ovr: 89 },
@@ -113,7 +119,8 @@ const playersDB = [
     { id: 710, name: "Roy Keane", pos: ["CDM", "CM"], club: "Man Utd", league: "Premier League", nat: "IRL", decade: "00s", stats: {gls: 3, ast: 4, drb: 40, tck: 95, int: 90}, ovr: 88 },
     { id: 711, name: "Ruud van Nistelrooy", pos: ["ST"], club: "Man Utd", league: "Premier League", nat: "NED", decade: "00s", stats: {gls: 25, ast: 4, drb: 50, tck: 15, int: 10}, ovr: 89 },
     
-    // ============ BAYERN MUNICH 10s ============\n    { id: 901, name: "Robert Lewandowski", pos: ["ST"], club: "Bayern Munich", league: "Bundesliga", nat: "POL", decade: "10s", stats: {gls: 35, ast: 7, drb: 50, tck: 15, int: 10}, ovr: 92 },
+    // ============ BAYERN MUNICH 10s ============
+    { id: 901, name: "Robert Lewandowski", pos: ["ST"], club: "Bayern Munich", league: "Bundesliga", nat: "POL", decade: "10s", stats: {gls: 35, ast: 8, drb: 50, tck: 20, int: 15}, ovr: 92 },
     { id: 902, name: "Arjen Robben", pos: ["RW", "RM"], club: "Bayern Munich", league: "Bundesliga", nat: "NED", decade: "10s", stats: {gls: 20, ast: 12, drb: 110, tck: 20, int: 15}, ovr: 90 },
     { id: 903, name: "Franck Ribéry", pos: ["LW", "LM"], club: "Bayern Munich", league: "Bundesliga", nat: "FRA", decade: "10s", stats: {gls: 15, ast: 18, drb: 120, tck: 25, int: 20}, ovr: 90 },
     { id: 904, name: "Thomas Müller", pos: ["CAM", "CF", "RW"], club: "Bayern Munich", league: "Bundesliga", nat: "GER", decade: "10s", stats: {gls: 20, ast: 20, drb: 60, tck: 35, int: 30}, ovr: 89 },
@@ -121,5 +128,27 @@ const playersDB = [
     { id: 906, name: "Philipp Lahm", pos: ["RB", "CDM", "LB"], club: "Bayern Munich", league: "Bundesliga", nat: "GER", decade: "10s", stats: {gls: 2, ast: 10, drb: 60, tck: 85, int: 90}, ovr: 89 },
     { id: 907, name: "Manuel Neuer", pos: ["GK"], club: "Bayern Munich", league: "Bundesliga", nat: "GER", decade: "10s", stats: {gls: 0, ast: 1, drb: 10, tck: 15, int: 25}, ovr: 91 },
     { id: 908, name: "David Alaba", pos: ["LB", "CB", "CM"], club: "Bayern Munich", league: "Bundesliga", nat: "AUT", decade: "10s", stats: {gls: 4, ast: 8, drb: 65, tck: 75, int: 80}, ovr: 86 },
-    { id: 909, name: "Jérôme Boateng", pos: ["CB"], club: "Bayern Munich", league: "Bundesliga", nat: "GER", decade: "10s", stats: {gls: 2, ast: 4, drb: 25, tck: 80, int: 85}, ovr: 86 }
+    { id: 909, name: "Jérôme Boateng", pos: ["CB"], club: "Bayern Munich", league: "Bundesliga", nat: "GER", decade: "10s", stats: {gls: 2, ast: 4, drb: 25, tck: 80, int: 85}, ovr: 86 },
+    
+    // ============ JUVENTUS 10s ============
+    { id: 1001, name: "Cristiano Ronaldo", pos: ["RW", "ST"], club: "Juventus", league: "Serie A", nat: "POR", decade: "10s", stats: {gls: 42, ast: 12, drb: 70, tck: 20, int: 20}, ovr: 95 },
+    { id: 1002, name: "Gianluigi Buffon", pos: ["GK"], club: "Juventus", league: "Serie A", nat: "ITA", decade: "10s", stats: {gls: 0, ast: 0, drb: 5, tck: 5, int: 15}, ovr: 90 },
+    { id: 1003, name: "Leonardo Bonucci", pos: ["CB"], club: "Juventus", league: "Serie A", nat: "ITA", decade: "10s", stats: {gls: 5, ast: 2, drb: 25, tck: 80, int: 85}, ovr: 88 },
+    { id: 1004, name: "Giorgio Chiellini", pos: ["CB", "LB"], club: "Juventus", league: "Serie A", nat: "ITA", decade: "10s", stats: {gls: 3, ast: 2, drb: 20, tck: 90, int: 85}, ovr: 89 },
+    { id: 1005, name: "Miralem Pjanić", pos: ["CM", "CDM"], club: "Juventus", league: "Serie A", nat: "BIH", decade: "10s", stats: {gls: 7, ast: 12, drb: 65, tck: 60, int: 65}, ovr: 87 },
+    { id: 1006, name: "Juan Cuadrado", pos: ["RB", "RWB", "RM"], club: "Juventus", league: "Serie A", nat: "COL", decade: "10s", stats: {gls: 5, ast: 8, drb: 80, tck: 70, int: 65}, ovr: 84 },
+    { id: 1007, name: "Dani Alves", pos: ["RB", "RWB"], club: "Juventus", league: "Serie A", nat: "BRA", decade: "10s", stats: {gls: 2, ast: 10, drb: 60, tck: 75, int: 70}, ovr: 85 },
+    { id: 1008, name: "Alex Sandro", pos: ["LB", "LWB"], club: "Juventus", league: "Serie A", nat: "BRA", decade: "10s", stats: {gls: 1, ast: 6, drb: 50, tck: 80, int: 75}, ovr: 85 },
+    
+    // ============ ICONIC CHAMPIONS - EXTENDED ============
+    { id: 2001, name: "Didier Drogba", pos: ["ST", "CF"], club: "Chelsea", league: "Premier League", nat: "CIV", decade: "00s", stats: {gls: 28, ast: 6, drb: 55, tck: 30, int: 20}, ovr: 92 },
+    { id: 2002, name: "Frank Lampard", pos: ["CM", "CAM"], club: "Chelsea", league: "Premier League", nat: "ENG", decade: "00s", stats: {gls: 16, ast: 12, drb: 60, tck: 60, int: 55}, ovr: 88 },
+    { id: 2003, name: "Eden Hazard", pos: ["LW", "CAM"], club: "Chelsea", league: "Premier League", nat: "BEL", decade: "10s", stats: {gls: 16, ast: 15, drb: 130, tck: 30, int: 25}, ovr: 92 },
+    { id: 2004, name: "Sergio Agüero", pos: ["ST"], club: "Man City", league: "Premier League", nat: "ARG", decade: "10s", stats: {gls: 32, ast: 8, drb: 55, tck: 15, int: 10}, ovr: 91 },
+    { id: 2005, name: "Harry Kane", pos: ["ST"], club: "Tottenham", league: "Premier League", nat: "ENG", decade: "10s", stats: {gls: 25, ast: 12, drb: 50, tck: 20, int: 15}, ovr: 89 },
+    { id: 2006, name: "N'Golo Kanté", pos: ["CDM", "CM"], club: "Chelsea", league: "Premier League", nat: "FRA", decade: "10s", stats: {gls: 2, ast: 3, drb: 40, tck: 90, int: 85}, ovr: 89 },
+    { id: 2007, name: "David De Gea", pos: ["GK"], club: "Man Utd", league: "Premier League", nat: "ESP", decade: "10s", stats: {gls: 0, ast: 0, drb: 5, tck: 5, int: 15}, ovr: 88 },
+    { id: 2008, name: "Diego Costa", pos: ["ST", "CF"], club: "Atlético Madrid", league: "La Liga", nat: "ESP", decade: "10s", stats: {gls: 20, ast: 6, drb: 45, tck: 35, int: 30}, ovr: 88 },
+    { id: 2009, name: "Antoine Griezmann", pos: ["ST", "CAM"], club: "Atlético Madrid", league: "La Liga", nat: "FRA", decade: "10s", stats: {gls: 18, ast: 12, drb: 85, tck: 30, int: 25}, ovr: 90 },
+    { id: 2010, name: "Francesco Totti", pos: ["CAM", "ST"], club: "AS Roma", league: "Serie A", nat: "ITA", decade: "00s", stats: {gls: 18, ast: 16, drb: 100, tck: 25, int: 20}, ovr: 90 }
 ];
